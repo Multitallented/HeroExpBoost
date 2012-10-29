@@ -8,9 +8,11 @@ commands:
   expboost:
     aliases: ['expb']
     description: '/expb <player> <multitplier> <number> <days|weeks|hours>'
+    permission: expboost.boost
   clearboost:
     aliases: ['expc']
     description: '/expc <player>'
+    permission: expboost.boost
 permissions:
   expboost.boost:
     description: Enables you to assign exp boosts to players
