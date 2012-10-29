@@ -1,0 +1,17 @@
+name: HeroExpBoost
+main: org.redcastlemedia.multitallented.bukkit.heroexpboost.HeroExpBoost
+version: 0.1-Beta
+authors: [Multitallented]
+description: Lets you give exp boosts to specific players
+depend: [Heroes]
+commands:
+  expboost:
+    aliases: ['expb']
+    description: '/expb <player> <multitplier> <number> <days|weeks|hours>'
+  clearboost:
+    aliases: ['expc']
+    description: '/expc <player>'
+permissions:
+  expboost.boost:
+    description: Enables you to assign exp boosts to players
+    default: op
