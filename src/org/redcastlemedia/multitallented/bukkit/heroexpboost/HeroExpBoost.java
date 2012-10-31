@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -27,8 +28,8 @@ public class HeroExpBoost extends JavaPlugin {
     @Override
     public void onEnable() {
         setupConfig();
-        
-        
+        ExpBoostListener listener = new ExpBoostListener(this);
+        Bukkit.getPluginManager().registerEvents(listener, this);
         log(NAME + " is enabled", Level.INFO);
     }
     
@@ -44,6 +45,7 @@ public class HeroExpBoost extends JavaPlugin {
             return true;
         } else if (args.length > 0) {
             new ExpClearCommand(this, cs, args);
+            return true;
         }
         
         cs.sendMessage(ChatColor.GOLD + NAME + " help pages 1/1");
@@ -74,7 +76,8 @@ public class HeroExpBoost extends JavaPlugin {
             return;
         }
         for (String s : config.getKeys(false)) {
-            expBoosts.put(s, new Boost(s, config.getDouble("multiplier", 1), config.getLong("duration")));
+            System.out.println(s + ":" + config.getLong(s + ".duration"));
+            expBoosts.put(s, new Boost(s, config.getDouble(s + ".multiplier", 1), config.getLong(s + ".duration")));
         }
     }
     

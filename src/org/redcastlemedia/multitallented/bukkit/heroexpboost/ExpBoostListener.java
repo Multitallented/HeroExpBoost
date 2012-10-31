@@ -16,7 +16,7 @@ public class ExpBoostListener implements Listener {
     
     @EventHandler
     public void onExpBoost(ExperienceChangeEvent event) {
-        String name = event.getHero().getPlayer().getName();
+        String name = event.getHero().getPlayer().getName().toLowerCase();
         if (!plugin.boostsContains(name) && plugin.getBoost(name).getDuration() > System.currentTimeMillis()) {
             return;
         }

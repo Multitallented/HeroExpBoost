@@ -57,6 +57,8 @@ public class ExpBoostCommand {
                 cs.sendMessage(ChatColor.RED + HeroExpBoost.NAME + " enter a valid time /expb <name> <multiplier> <number> <days|weeks|hours>");
                 return;
         }
+        time += System.currentTimeMillis();
+        
         cs.sendMessage(ChatColor.GOLD + HeroExpBoost.NAME + " " + multiplier + " boost awarded to " + name + " for " + args[2] + " " + args[3]);
         plugin.putBoost(name, new Boost(name, multiplier, time));
     }
